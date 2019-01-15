@@ -36,11 +36,13 @@ class Todo extends Component {
       time: moment().format('LTS'),
       status: 'add task'
     };
-    this.setState({
-      listTodo: listTodo.concat(todoObj),
-      logTodo: logTodo.concat(todoObj),
-      nameTodo: '',
-    });
+    if(nameTodo) {
+      this.setState({
+        listTodo: listTodo.concat(todoObj),
+        logTodo: logTodo.concat(todoObj),
+        nameTodo: '',
+      });
+    }
   };
 
   inProgressTodo = ( todo, id ) => {

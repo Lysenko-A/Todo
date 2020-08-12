@@ -22,8 +22,6 @@ class Todo extends Component {
   nameTodoChange = ( val ) => {
     this.setState({
       nameTodo: val,
-    }, () => {
-      console.log(this.state)
     });
   };
 
@@ -48,9 +46,11 @@ class Todo extends Component {
   inProgressTodo = ( todo, id ) => {
     const {listTodo, listTodoInProgress, logTodo} = this.state;
     let newLog = Object.assign({}, todo);
+
     newLog.id = Math.floor(10000 + Math.random() * 90000);
     newLog.status = 'change status to in progress';
     newLog.time = moment().format('LTS');
+
     this.setState({
       listTodoInProgress: listTodoInProgress.concat(todo),
       listTodo: listTodo.filter(item => item.id !== id),
@@ -61,9 +61,11 @@ class Todo extends Component {
   inTodo = ( todo, id ) => {
     const {listTodo, listTodoInProgress, logTodo} = this.state;
     let newLog = Object.assign({}, todo);
+
     newLog.id = Math.floor(10000 + Math.random() * 90000);
     newLog.status = 'change status to in to do';
     newLog.time = moment().format('LTS');
+
     this.setState({
       listTodo: listTodo.concat(todo),
       listTodoInProgress: listTodoInProgress.filter(item => item.id !== id),
@@ -74,9 +76,11 @@ class Todo extends Component {
   doneTodoFunc = ( todo, id ) => {
     const {listTodoInProgress, listTodoDone, logTodo} = this.state;
     let newLog = Object.assign({}, todo);
+
     newLog.id = Math.floor(10000 + Math.random() * 90000);
     newLog.status = 'change status to done';
     newLog.time = moment().format('LTS');
+
     this.setState({
       listTodoDone: listTodoDone.concat(todo),
       listTodoInProgress: listTodoInProgress.filter(item => item.id !== id),
@@ -88,9 +92,11 @@ class Todo extends Component {
   deleteTodo = ( todo, id ) => {
     const {logTodo} = this.state;
     let newLog = Object.assign({}, todo);
+
     newLog.id = Math.floor(10000 + Math.random() * 90000);
     newLog.status = 'change status to done';
     newLog.time = moment().format('LTS');
+
     this.setState({
       listTodo: this.state.listTodo.filter(item => item.id !== id),
       listTodoInProgress: this.state.listTodoInProgress.filter(item => item.id !== id),
@@ -107,6 +113,7 @@ class Todo extends Component {
       status: todoList,
       time: moment().format('LTS'),
     }];
+
     if (todoList === 'logTodo') {
       this.setState({
         [todoList]: [],
@@ -122,6 +129,7 @@ class Todo extends Component {
 
   render() {
     const {listTodo, listTodoInProgress, listTodoDone, logTodo, nameTodo} = this.state;
+
     return (
       <div style={{padding: '0 20px'}}>
         <Typography
